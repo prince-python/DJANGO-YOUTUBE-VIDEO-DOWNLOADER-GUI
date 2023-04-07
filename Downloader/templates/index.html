@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+ 
+  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>  
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+  <title>YOUTUBE DOWNLOAD WITH PRINCE</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-
-
-
-
+  <script>  
+  
+ </script>  
 
     <center>
       <center>{% if messages %}
@@ -18,18 +23,19 @@
             {% endfor %}
         
         {% endif %}</center>
-        <div class="row bg-primary border border-dark  h-50 w-50 mt-5 p-5" style="box-shadow:0px 0px 50px black">
+        <div class="row bg-white rounded rounded-5 h-50 w-50 mt-5 p-5" style="box-shadow:0px 0px 50px black">
          <form action="/"  method="post"> 
         {% csrf_token %}
        
        <div class="form-group mt" >
-          <input type="text" class="form-control"  name="link" placeholder="Paste Link Here">
+          <input type="text" class="form-control shadow-lg"  name="link" placeholder="Paste Link Here">
         </div><br>
         
-        <button type="submit" class="btn btn-success border-dark shadow-lg " style="box-shadow: 0px 0px 50px black;">Search video</button><br><br>
+        <button type="submit" class="btn btn-white border-dark text-black shadow-lg " style="box-shadow: 0px 0px 50px black;">Search video</button><br><br>
       </form>
-      <div class="bg-primary">
-        <img src="{{data.pic}}" alt="no image search link" class="bg-primary rounded rounded-5 h-75  w-50 "><br>
+      <div class="bg-white shadow-lg p-5 " >
+        <div class='p-1'>
+        <img src="{{data.pic}}" alt="no image search link" class="bg-white shadow-lg rounded rounded-5 h-100 w-100 "></div><br>
        
            
             <form action="download/" method="post">
@@ -40,20 +46,35 @@
              
               <option selected>Select Resolution</option>
               {% for i in  st %}
-            <option  value="{{forloop.counter0}}">{{i}}</option>
+            <option   value="{{forloop.counter0}}">{{i}}</option>
             {% endfor %}
-            <input type="submit" onClick='show()' value="download">
-          </form>
-            
           </select>
+            <button class='mt-5 mb-5 btn btn-white text-black shadow-lg' id="button"  onClick='show()'>DOWNLOAD</button>
+          </form>
+          <div id="overlay">
+            <div class="cv-spinner">
+              <span class="spinner"></span>
+            </div>
+          </div>
+         
       </div>
     
     </div></center> 
+    <center>
+      <footer>
+          <div class="mt-5 p-5 ">
+              <a href="https://github.com/prince-python " class="btn btn-primary text-white">DEVLOPED BY PRINCE</a>
+          </div>
+      </footer>
+  </center>
     
 </body>
 <script>
   const show=()=>{
     window.alert("Downloading started wait for next  message")
+    
+
+    
    
   }
 </script>
